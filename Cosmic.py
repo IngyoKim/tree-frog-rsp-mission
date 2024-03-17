@@ -4,6 +4,17 @@ import time
 class RSP:
     def FrogRSP():
         AnswerStr = str(input("가위, 바위, 보를 입력해주세요 : "))
+
+        if AnswerStr == '가위':
+            Answer = 0
+        elif AnswerStr == '바위':
+            Answer = 1
+        elif AnswerStr == '보':
+            Answer = 2
+        else:
+            print("Error!")
+            exit()
+
         ComputerValue = random.randint(0, 2)
 
         if ComputerValue == 0:
@@ -18,29 +29,25 @@ class RSP:
         EndTime = time.time()
         TimeValue = EndTime - StartTime
 
-        if AnswerStr == '가위':
-            Answer = 0
-        elif AnswerStr == '바위':
-            Answer = 1
-        else:
-            Answer = 2
-
         if TimeValue < 3:
             if GameValueStr == '개굴':
                 if Answer == ComputerValue:
                     print("당신은 승리하셨습니다!")
                 else:
                     print("당신은 패배하셨습니다!")
-            elif GameValueStr == '졌다':
+            elif GameValueStr == '이겼다':
                 if ComputerValue - Answer == 1 or (ComputerValue == 0 and Answer == 2):
                     print("당신은 승리하셨습니다!")
                 else:
                     print("당신은 패배하셨습니다!")
-            elif GameValueStr == '이겼다':
+            elif GameValueStr == '졌다':
                 if Answer - ComputerValue == 1 or (Answer == 0 and ComputerValue == 2):
-                    print("당신은 승리하셨습니다.")
+                    print("당신은 승리하셨습니다!")
                 else:
                     print("당신은 패배하셨습니다!")
+            else:
+                print("Error!")
+                exit()
         else:
             print("당신은 시간초과로 패배하셨습니다!")
 
@@ -50,6 +57,9 @@ ReplayGameValue = int(input("게임을 새로 시작하려면 1, 종료하려면
 while True:
     if ReplayGameValue == 1:
         RSP.FrogRSP()
-        ReplayGameValue = int(input("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n"))
+        ReplayGameValue = int(input("게임을 새로 시작 하려면 1, 종료하려면 2를 입력하세요.\n"))
+    elif ReplayGameValue == 2:
+        exit()
     else:
+        print("Error!")
         exit()
