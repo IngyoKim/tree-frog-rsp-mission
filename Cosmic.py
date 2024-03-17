@@ -57,7 +57,7 @@ ReplayGameValue = int(input("게임을 새로 시작하려면 1, 종료하려면
 while True:
     if ReplayGameValue == 1:
         RSP.FrogRSP()
-        ReplayGameValue = int(input("게임을 새로 시작 하려면 1, 종료하려면 2를 입력하세요.\n"))
+        ReplayGameValue = int(input("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n"))
     elif ReplayGameValue == 2:
         exit()
     else:
