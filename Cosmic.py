@@ -33,23 +33,30 @@ class RSP:
             if GameValueStr == '개굴':
                 if Answer == ComputerValue:
                     print("당신은 승리하셨습니다!")
+                    return 1
                 else:
                     print("당신은 패배하셨습니다!")
+                    return 2
             elif GameValueStr == '이겼다':
                 if ComputerValue - Answer == 1 or (ComputerValue == 0 and Answer == 2):
                     print("당신은 승리하셨습니다!")
+                    return 1
                 else:
                     print("당신은 패배하셨습니다!")
+                    return 2
             elif GameValueStr == '졌다':
                 if Answer - ComputerValue == 1 or (Answer == 0 and ComputerValue == 2):
                     print("당신은 승리하셨습니다!")
+                    return 1
                 else:
                     print("당신은 패배하셨습니다!")
+                    return 2
             else:
                 print("Error!")
                 exit()
         else:
             print("당신은 시간초과로 패배하셨습니다!")
+            return 2
 
     def HardFrogRSP():
         ReplyValue = random.randint(1,10)
@@ -95,37 +102,79 @@ class RSP:
             if GameValueStr == '개굴':
                 if Answer == ComputerValue:
                     print("당신은 승리하셨습니다!")
+                    return 3
                 else:
                     print("당신은 패배하셨습니다!")
+                    return 4
             elif GameValueStr == '이겼다':
                 if ComputerValue - Answer == 1 or (ComputerValue == 0 and Answer == 2):
                     print("당신은 승리하셨습니다!")
+                    return 3
                 else:
                     print("당신은 패배하셨습니다!")
+                    return 4
             elif GameValueStr == '졌다':
                 if Answer - ComputerValue == 1 or (Answer == 0 and ComputerValue == 2):
                     print("당신은 승리하셨습니다!")
+                    return 3
                 else:
                     print("당신은 패배하셨습니다!")
+                    return 4
             else:
                 print("Error!")
                 exit()
         else:
             print("당신은 시간초과로 패배하셨습니다!")
+            return 4
 
+Score = 0
 print("청개구리 가위바위보를 시작합니다.")
-RSP.FrogRSP()
+print("현재 점수는 : 0")
+ScoreValue = RSP.FrogRSP()
 ReplayGameValue = int(input("게임을 새로 시작하려면 1, 종료하려면 2, 하드모드를 하려면 3을 입력하세요.\n"))
 
+if ScoreValue == 1:
+    Score = Score + 1
+elif ScoreValue == 2:
+    Score = Score - 1
+elif ScoreValue == 3:
+    Score = Score + 2
+elif ScoreValue == 4:
+    Score = Score - 2
+
 while True:
+
     if ReplayGameValue == 1:
-        RSP.FrogRSP()
+        print("현재 점수는 : {}".format(Score))
+        ScoreValue = RSP.FrogRSP()
         ReplayGameValue = int(input("게임을 새로 시작하려면 1, 종료하려면 2, 하드모드를 하려면 3을 입력하세요.\n"))
+
+        if ScoreValue == 1:
+            Score = Score + 1
+        elif ScoreValue == 2:
+            Score = Score - 1
+        elif ScoreValue == 3:
+            Score = Score + 2
+        elif ScoreValue == 4:
+            Score = Score - 2
+
     elif ReplayGameValue == 2:
+        print("현재 점수는 : {}".format(Score))
         exit()
     elif ReplayGameValue == 3:
-        RSP.HardFrogRSP()
+        print("현재 점수는 : {}".format(Score))
+        ScoreValue = RSP.HardFrogRSP()
         ReplayGameValue = int(input("게임을 새로 시작하려면 1, 종료하려면 2, 하드모드를 하려면 3을 입력하세요.\n"))
+
+        if ScoreValue == 1:
+            Score = Score + 1
+        elif ScoreValue == 2:
+            Score = Score - 1
+        elif ScoreValue == 3:
+            Score = Score + 2
+        elif ScoreValue == 4:
+            Score = Score - 2
+
     else:
         print("Error!")
         exit()
